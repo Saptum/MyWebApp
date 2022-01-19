@@ -17,21 +17,21 @@ public class UserController {
     private UserService service;
 
     @GetMapping("/users")
-    public String showUsersList(Model model){
-        List<User> listUsers =service.listAll();
-        model.addAttribute("listUsers",listUsers);
+    public String showUsersList(Model model) {
+        List<User> listUsers = service.listAll();
+        model.addAttribute("listUsers", listUsers);
         return "users";
     }
 
     @GetMapping("/users/new")
-    public String showNewForm(Model model){
-        model.addAttribute("user",new User());
+    public String showNewForm(Model model) {
+        model.addAttribute("user", new User());
         return "user_form";
     }
 
-@PostMapping("/users/save/")
-    public String saveUser(User user){
+    @PostMapping("/users/save")
+    public String saveUser(User user) {
         service.save(user);
         return "redirect:/users";
-}
+    }
 }
