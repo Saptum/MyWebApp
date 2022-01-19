@@ -7,10 +7,13 @@
 </head>
 <body>
 <div class="container-fluid text-center">
-  <div><h2>Manage Users</h2></div>
+    <div><h2>Manage Users</h2></div>
+    <div>
+        <a class="h3">Add New User</a>
+    </div>
     <div>
         <table class="table table-bordered">
-            <thead>
+            <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>E-mail</th>
@@ -19,7 +22,23 @@
                 <th></th>
             </tr>
             </thead>
+            <tbody>
+            <th:block th:each="user : ${listUsers}">
+                <tr>
+                    <td>[[${user.id}]]</td>
+                    <td>[[${user.email}]]</td>
+                    <td>[[${user.firstName}]]</td>
+                    <td>[[${user.lastName}]]</td>
+                    <td>
+                        <a class="h4 mr-3">Edit</a>
+                        <a class="h4">Delete</a>
+                    </td>
+                </tr>
+            </th:block>
+
+            </tbody>
         </table>
+
     </div>
 </div>
 </body>
