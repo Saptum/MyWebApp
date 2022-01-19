@@ -16,6 +16,7 @@ public class User {
     private String firstName;
     @Column(length = 45,nullable = false,name = "last_name")
     private String lastName;
+    private boolean enabled;
 
     public Integer getId() {
         return id;
@@ -66,5 +67,13 @@ public class User {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 '}';
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }
