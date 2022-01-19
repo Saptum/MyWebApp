@@ -33,9 +33,17 @@ public class UserRepositoryTest {
     }
 
     @Test
-    public void testListAll(){
+    public void testListAll() {
+        Iterable<User> users = repository.findAll();
+        Assertions.assertThat(users).hasSizeGreaterThan(0);
 
+        for (User user : users) {
+            System.out.println(user);
+        }
     }
 
+    @Test
+    public void testUpdate(){
 
+    }
 }
