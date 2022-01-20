@@ -29,14 +29,14 @@ public class UserController {
     @GetMapping("/users/new")
     public String showNewForm(Model model) {
         model.addAttribute("user", new User());
-        model.addAttribute("pageTitle","Add New User");
+        model.addAttribute("pageTitle", "Add New User");
         return "user_form";
     }
 
     @PostMapping("/users/save")
-    public String saveUser(User user,RedirectAttributes redirectAttributes) {
+    public String saveUser(User user, RedirectAttributes redirectAttributes) {
         service.save(user);
-        redirectAttributes.addFlashAttribute("message","The user has been saved successfully.");
+        redirectAttributes.addFlashAttribute("message", "The user has been saved successfully.");
         return "redirect:/users";
     }
 
@@ -44,12 +44,12 @@ public class UserController {
     public String showEditForm(@PathVariable("id") Integer id, Model model, RedirectAttributes redirectAttributes) {
         try {
             User user = service.get(id);
-            model.addAttribute("user",user);
-            model.addAttribute("pageTitle","Edit User (ID: " + id +")");
+            model.addAttribute("user", user);
+            model.addAttribute("pageTitle", "Edit User (ID: " + id + ")");
 
             return "user_form";
-        }catch (UserNotFoundException exception){
-            redirectAttributes.addFlashAttribute("message",exception.getMessage());
+        } catch (UserNotFoundException exception) {
+            redirectAttributes.addFlashAttribute("message", exception.getMessage());
             return "redirect:/users";
         }
     }
@@ -58,9 +58,9 @@ public class UserController {
     public String deleteUser(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
         try {
             service.delete(id);
-            redirectAttributes.addFlashAttribute("message","The user ID " + id +" has been deleted");
-        }catch (UserNotFoundException exception){
-            redirectAttributes.addFlashAttribute("message",exception.getMessage());
+            redirectAttributes.addFlashAttribute("message", "The user ID " + id + " has been deleted");
+        } catch (UserNotFoundException exception) {
+            redirectAttributes.addFlashAttribute("message", exception.getMessage());
         }
         return "redirect:/users";
     }

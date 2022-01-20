@@ -8,7 +8,7 @@ public class MainController {
 
 
     @GetMapping("")
-    public String showHomePage(){
+    public String showHomePage() {
         return "index";
     }
 }
